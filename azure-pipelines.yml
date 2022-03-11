@@ -12,21 +12,25 @@ pool:
 
 stages:
 - stage: Build
-  steps:
-  - script: echo Build!
+  jobs:
+  - job: Build
+    steps:
+    - bash: echo "Build!"
 
 - stage: Test
   jobs:
-  - job: B1
-  - job: B
+  - job: Unit_Tests
+    steps:
+    - bash: echo "Unit Tests!"
+  - job: Checkmarx_Scan
+    steps:
+    - bash: echo "Unit Tests!"
+    
 - stage: Deploy
   jobs:
-  - job: B1
-  - job: B
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - job: UAT_Deploy
+    steps:
+    - bash: echo "UAT Deploy!"
+  - job: Production_Deploy
+    steps:
+    - bash: echo "Production Deplo!"
