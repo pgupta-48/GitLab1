@@ -15,22 +15,22 @@ stages:
   jobs:
   - job: Build
     steps:
-    - bash: echo "Build!"
+    - bash: echo "Build!!!"
 
 - stage: Test
   jobs:
   - job: Unit_Tests
     steps:
-    - bash: echo "Unit Tests!"
+    - bash: echo "Unit Tests!!!"
   - job: Checkmarx_Scan
     steps:
-    - bash: echo "Unit Tests!"
+    - bash: echo "Unit Tests!!!"
     
 - stage: Deploy
   jobs:
   - job: UAT_Deploy
     steps:
-    - bash: echo "UAT Deploy!"
+    - bash: echo "UAT Deploy!!!"
   - job: Production_Deploy
     steps:
-    - bash: echo "Production Deplo!"
+    - bash: echo "Production Deploy!!!"
