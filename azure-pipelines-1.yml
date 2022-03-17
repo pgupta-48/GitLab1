@@ -1,4 +1,18 @@
 # Starter pipeline
+- task: ServiceNow-DevOps-Agent-Artifact-Registration@1
+  inputs:
+    connectedServiceName: 'Azure DevOps ServiceNow'
+    artifactsPayload: |
+      {
+         "artifacts": [
+            {
+               "name": "_pgupta-48.Pipeline 2",
+               "version": "1.$(Build.BuildId)",
+               "semanticVersion": "1.$(Build.BuildId).0",
+               "repositoryName": "pgupta-48/GitLab1"
+            }
+         ]
+      }
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
