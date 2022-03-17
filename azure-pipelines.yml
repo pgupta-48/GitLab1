@@ -1,36 +1,14 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- mainbranch
-
-pool:
-  vmImage: ubuntu-latest
-
-
-stages:
-- stage: Build
-  jobs:
-  - job: Build
-    steps:
-    - bash: echo "Build!!!"
-
-- stage: Test
-  jobs:
-  - job: Unit_Tests
-    steps:
-    - bash: echo "Unit Tests!!!"
-  - job: Checkmarx_Scan
-    steps:
-    - bash: echo "Unit Tests!!!"
-    
-- stage: Deploy
-  jobs:
-  - job: UAT_Deploy
-    steps:
-    - bash: echo "UAT Deploy!!!"
-  - job: Production_Deploy
-    steps:
-    - bash: echo "Production Deploy!!!"
+- task: ServiceNow-DevOps-Agent-Artifact-Registration@1
+  inputs:
+    connectedServiceName: 'Azure DevOps ServiceNow'
+    artifactsPayload: |
+      {
+         "artifacts": [
+            {
+               "name": "TestArtifact1",
+               "version": "1.$(Build.BuildId)",
+               "semanticVersion": "1.$(Build.BuildId).0",
+               "repositoryName": "TestRepo"
+            }
+         ]
+      }
